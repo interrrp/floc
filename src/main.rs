@@ -1,4 +1,7 @@
-use std::sync::{atomic::AtomicU64, Arc};
+use std::{
+    process::exit,
+    sync::{atomic::AtomicU64, Arc},
+};
 
 use owo_colors::OwoColorize;
 use rayon::prelude::{IntoParallelRefIterator, ParallelIterator};
@@ -8,6 +11,19 @@ mod utils;
 
 fn main() {
     let args = args::parse();
+
+    if !args.directory.exists() {
+        println!(
+            "{}",
+            format!("Directory {} does not exist", args.directory.display()).red()
+        );
+        exit(-1);
+    }
+
+    if args.extensions.is_empty() {
+        println!("{}", "Extensions list is empty".red());
+        exit(-1);
+    }
 
     let total = Arc::new(AtomicU64::new(0));
     utils::find_files_with_extensions(&args.directory, &args.extensions)
