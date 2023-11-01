@@ -5,9 +5,9 @@ use clap::Parser;
 /// Count the lines in your codebase.
 #[derive(clap::Parser)]
 pub struct Args {
-    /// The file extension to check. Example: "rs" or "py".
+    /// The file extension(s) to check. Example: "rs" or "py".
     #[clap(short, long, default_value = "rs")]
-    pub extension: String,
+    pub extensions: Vec<String>,
 
     /// The directory to check. Example: "src" or "tests".
     #[clap(short, long, default_value = "src")]

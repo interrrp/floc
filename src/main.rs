@@ -9,7 +9,7 @@ fn main() {
     let args = args::parse();
 
     let total = Arc::new(AtomicU64::new(0));
-    utils::find_files_with_extension(&args.directory, &args.extension)
+    utils::find_files_with_extensions(&args.directory, &args.extensions)
         .par_iter()
         .for_each(|path| {
             let lines = utils::count_lines(path);
@@ -22,9 +22,9 @@ fn main() {
     println!("Total: {} LoC", total);
 
     println!(
-        "\nIn conclusion, the {} directory contains {} lines of code throughout all .{} files.",
+        "\nIn conclusion, the {} directory contains {} lines of code throughout all {} files.",
         args.directory.display(),
         total,
-        &args.extension,
+        &args.extensions.join(", "),
     );
 }
