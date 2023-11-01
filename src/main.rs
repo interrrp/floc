@@ -1,3 +1,10 @@
+mod args;
+
 fn main() {
-    println!("Hello, world!");
+    let args = args::parse();
+
+    println!(
+        "Counting LoC of {} files in {}...",
+        args.extension, args.directory
+    );
 }
