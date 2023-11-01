@@ -28,19 +28,19 @@ pub fn count_lines(path: &Path) -> usize {
     contents.lines().count()
 }
 
-pub fn format_extensions_list(exts: &[String]) -> String {
+pub fn seq_to_english(items: &[String]) -> String {
     let mut formatted = String::new();
-    for (idx, ext) in exts.iter().enumerate() {
-        let is_last = idx == exts.len() - 1;
+    for (idx, item) in items.iter().enumerate() {
+        let is_last = idx == items.len() - 1;
 
-        if is_last && exts.len() > 1 {
-            formatted.push_str(&format!("and {}", ext));
+        if is_last && items.len() > 1 {
+            formatted.push_str(&format!("and {}", item));
             continue;
         }
 
-        formatted.push_str(&format!("{}", ext));
+        formatted.push_str(&format!("{}", item));
 
-        if !is_last && exts.len() > 2 {
+        if !is_last && items.len() > 2 {
             formatted.push(',');
         }
 
