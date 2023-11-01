@@ -10,6 +10,10 @@ pub fn find_files_with_extension(dir: &Path, ext: &str) -> Vec<PathBuf> {
         let entry = entry.unwrap();
         let path = entry.path();
 
+        if path.extension().is_none() {
+            continue;
+        }
+
         if path.is_file() && path.extension().unwrap() == ext {
             files.push(path.to_path_buf());
         }
