@@ -1,5 +1,6 @@
 use std::sync::{atomic::AtomicU64, Arc};
 
+use owo_colors::OwoColorize;
 use rayon::prelude::{IntoParallelRefIterator, ParallelIterator};
 
 mod args;
@@ -14,12 +15,12 @@ fn main() {
         .for_each(|path| {
             let lines = utils::count_lines(path);
             total.fetch_add(lines as u64, std::sync::atomic::Ordering::SeqCst);
-            println!("{}: {} LoC", path.display(), lines);
+            println!("{}: {} LoC", path.display().bright_black(), lines);
         });
 
     let total = total.load(std::sync::atomic::Ordering::SeqCst);
 
-    println!("Total: {} LoC", total);
+    println!("{}", format!("Total: {} LoC", total).green());
 
     println!(
         "\nIn conclusion, the {} directory contains {} lines of code throughout all {} files.",
