@@ -1,3 +1,5 @@
+use std::path::PathBuf;
+
 use clap::Parser;
 
 /// Count the lines in your codebase.
@@ -9,7 +11,7 @@ pub struct Args {
 
     /// The directory to check. Example: "src" or "tests".
     #[clap(short, long, default_value = "src")]
-    pub directory: String,
+    pub directory: PathBuf,
 }
 
 pub fn parse() -> Args {
