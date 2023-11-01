@@ -25,6 +25,6 @@ fn main() {
         "\nIn conclusion, the {} directory contains {} lines of code throughout all {} files.",
         args.directory.display(),
         total,
-        &args.extensions.join(", "),
+        utils::format_extensions_list(&args.extensions),
     );
 }
