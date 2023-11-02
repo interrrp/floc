@@ -3,6 +3,7 @@ name = "floc"
 description = "Count the lines in your codebase."
 version = "0.1.0"
 authors = ["interrrp <int@addictedto.coffee>"]
+license-file = "LICENSE"
 edition = "2021"
 
 [dependencies]
