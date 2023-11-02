@@ -3,6 +3,19 @@
 
 # Installation
 
+## Via `cargo install`
+
+You can install `floc` by installing the crates on [crates.io](https://crates.io).
+
+Requirements:
+- [Cargo](https://rust-lang.org) 1.73.0 or higher
+
+```sh
+cargo install floc
+```
+
+`floc` should now be installed in the Cargo `bin` directory. Nice! 🎉
+
 ## Via source code
 
 You can install `floc` by building the project manually.
